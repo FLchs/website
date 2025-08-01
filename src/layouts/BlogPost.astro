@@ -6,17 +6,18 @@ import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
 import Prose from "../components/Prose.astro";
+import Tag from "../components/Tag.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags } =
+  Astro.props;
 ---
 
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} />
   </head>
-
   <body>
     <Header />
     <main>
@@ -25,26 +26,40 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
           {
             heroImage && (
               <Image
-                height={510}
+                width={800}
                 src={heroImage}
                 alt=""
                 layout="constrained"
-                class="w-full"
+                class="mx-auto"
               />
             )
           }
         </div>
         <div class="max-w-[800px] m-auto mb-4">
           <h1 class="text-primary text-3xl font-bold my-2">{title}</h1>
-          <div class="">
-            <FormattedDate date={pubDate} />
-            {
-              updatedDate && (
-                <div class="last-updated-on">
-                  Last updated on <FormattedDate date={updatedDate} />
-                </div>
-              )
-            }
+          <div class="flex flex-row gap-2 justify-between">
+            <div>
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <ul class="flex flex-row gap-2 mb-2 justify-self-end">
+              {
+                tags &&
+                  tags.map((tag) => {
+                    return (
+                      <li>
+                        <Tag tag={tag} />
+                      </li>
+                    );
+                  })
+              }
+            </ul>
           </div>
           <hr />
         </div>

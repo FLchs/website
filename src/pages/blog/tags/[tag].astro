@@ -1,15 +1,35 @@
 ---
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import BaseHead from "../../components/BaseHead.astro";
-import Footer from "../../components/Footer.astro";
-import FormattedDate from "../../components/FormattedDate.astro";
-import Header from "../../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import BaseHead from "../../../components/BaseHead.astro";
+import Footer from "../../../components/Footer.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+import Header from "../../../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../../consts";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const tags = posts.reduce((acc, post) => {
+    if (!post.data.tags) return acc;
+    return [...acc, ...post.data.tags];
+  }, [] as string[]);
+  return tags.map((tag) => {
+    return {
+      params: {
+        tag,
+      },
+      props: {
+        posts: posts
+          .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+          .filter((post) => post.data.tags?.includes(tag)),
+        // const filteredPosts = posts.filter((post: any) =>
+      },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,6 +41,7 @@ const posts = (await getCollection("blog")).sort(
     <Header />
     <main class="max-w-[800px] m-auto">
       <section>
+        <h1>{tag}</h1>
         <ul class="flex flex-wrap">
           {
             posts.map((post, i) => (

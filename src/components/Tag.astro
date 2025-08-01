@@ -1,0 +1,23 @@
+---
+type Props = { tag: string };
+
+const { tag } = Astro.props;
+const hash =
+  Array.from(tag).reduce((acc, char) => acc + char.charCodeAt(0), 0) % 9;
+const bgClasses = [
+  "bg-mauve",
+  "bg-red",
+  "bg-peach",
+  "bg-yellow",
+  "bg-green",
+  "bg-sapphire",
+  "bg-blue",
+  "bg-lavender",
+];
+---
+
+<!-- TODO: improve colors -->
+<a
+  class={`bg-gray-500 px-2 rounded text- ${bgClasses[hash]}`}
+  href=`/blog/tags/${tag}`>{tag}</a
+>

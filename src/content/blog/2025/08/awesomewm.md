@@ -1,8 +1,12 @@
 ---
-title: 'Managing rounder corners in AwesomeWM and Picom'
-description: 'Lorem ipsum dolor sit amet'
-pubDate: 'Jul 08 2022'
-heroImage: '../../assets/blog-placeholder-3.jpg'
+title: 'Managing rounded corners in AwesomeWM and Picom'
+tags: 
+- linux
+- desktop
+- awesomewm
+description: 'How to have nice rounded corners in AwesomeWM using Picom'
+pubDate: 'Jul 08 2025'
+heroImage: './awesomewm.png'
 ---
 
 ## Rounder corners look nice for single windows but looks weird fullscreen
