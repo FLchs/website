@@ -1,1 +1,42 @@
 @import "tailwindcss";
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+/* @import "assets/css/syntax.css"; */
+
+@theme {
+  /*default font*/
+  --font-mono: "Fira Code", Menlo, Monaco, Consolas, "Courier New", monospace;
+  /*accent colors from catppuccin mocha*/
+  --color-mauve: #cba6f7;
+  --color-red: #f38ba8;
+  --color-peach: #fab387;
+  --color-yellow: #f9e2af;
+  --color-green: #a6e3a1;
+  --color-sapphire: #74c7ec;
+  --color-blue: #89b4fa;
+  --color-lavender: #b4befe;
+  --color-text: #cdd6f4;
+  --color-subtext: #a6adc8;
+  --color-overlay: #7f849c;
+  --color-surface: #313244;
+  --color-base: #1e1e2e;
+  --color-mantle: #181825;
+
+  /* default colors */
+  --color-title: var(--color-blue);
+  --color-primary: var(--color-green);
+  /* primary Color */
+  --color-secondary: var(--color-blue);
+  /* secondary */
+  --color-tertiary: var(--color-mauve);
+  /* tertiary */
+  --container-reading: 80ch;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-mono);
+    background-color: var(--color-base);
+    color: var(--color-text);
+  }
+}
