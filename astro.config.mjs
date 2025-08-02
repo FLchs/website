@@ -11,7 +11,7 @@ export default defineConfig({
   vite: { plugins: [tailwindcss()] },
   markdown: {
     shikiConfig: {
-      theme: "catppuccin-frappe", // to fix to macchiato
+      theme: "catppuccin-frappe", // TODO: fix to macchiato or chose a better theme ? or not ?
     },
   },
 });
