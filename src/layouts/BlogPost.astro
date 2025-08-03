@@ -10,7 +10,7 @@ import Tag from "../components/Tag.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, tags } =
+const { title, description, pubDate, updatedDate, heroImage, tags, draft } =
   Astro.props;
 ---
 
@@ -26,7 +26,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
           {
             heroImage && (
               <Image
-                width={800}
+                width={900}
                 src={heroImage}
                 alt=""
                 layout="constrained"
@@ -37,6 +37,13 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
         </div>
         <div class="max-w-[800px] m-auto mb-4">
           <h1 class="text-primary text-3xl font-bold my-2">{title}</h1>
+          {
+            draft && (
+              <span class="bg-red rounded px-2 text-red-900 text-sm mb-4 font-bold inline-block">
+                draft
+              </span>
+            )
+          }
           <div class="flex flex-row gap-2 justify-between">
             <div>
               <FormattedDate date={pubDate} />
