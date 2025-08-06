@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import FormattedDate from "../components/FormattedDate.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Article = CollectionEntry<"blog">;
+interface Props {
+  posts: Article[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="flex flex-wrap">
+  {
+    posts.map((post, i) => (
+      <li class="w-1/2 py-2 first:w-full">
+        <a href={`/blog/${post.id}/`}>
+          {post.data.heroImage &&
+            (i === 0 ? (
+              <Image
+                width={800}
+                height={360}
+                src={post.data.heroImage}
+                alt=""
+              />
+            ) : (
+              <Image
+                width={400}
+                height={200}
+                src={post.data.heroImage}
+                layout="constrained"
+                alt=""
+              />
+            ))}
+          <h4 class="text-xl font-bold text-primary">{post.data.title}</h4>
+          <p class="date">
+            <FormattedDate date={new Date(post.data.pubDate)} />
+          </p>
+        </a>
+        <p>{post.data.description}</p>
+      </li>
+    ))
+  }
+</ul>
