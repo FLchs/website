@@ -1,14 +1,9 @@
 ---
-import AboutHeroImage from "../assets/blog-placeholder-about.jpg";
-import Layout from "../layouts/BlogPost.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<Layout
-  title="Portfolio"
-  description="My projects"
-  pubDate={new Date("August 08 2021")}
-  heroImage={AboutHeroImage}
->
+<!-- TODO: change title, description and create content -->
+<BaseLayout title="Portfolio" description="My projects">
   <section>
     <h2>Psynergy</h2>
   </section>
@@ -21,4 +16,4 @@ import Layout from "../layouts/BlogPost.astro";
   <section>
     <h2>Oxeau Metering</h2>
   </section>
-</Layout>
+</BaseLayout>
