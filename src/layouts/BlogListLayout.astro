@@ -11,33 +11,31 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<ul class="flex flex-wrap">
+<ul class="grid grid-cols-2 gap-4">
   {
     posts.map((post, i) => (
-      <li class="w-1/2 py-2 first:w-full">
+      <li class="first:col-span-2">
         <a href={`/blog/${post.id}/`}>
           {post.data.heroImage &&
             (i === 0 ? (
               <Image
                 width={800}
-                height={360}
                 src={post.data.heroImage}
                 alt=""
+                class="rounded"
               />
             ) : (
               <Image
                 width={400}
-                height={200}
                 src={post.data.heroImage}
                 layout="constrained"
+                class="rounded"
                 alt=""
               />
             ))}
-          <h4 class="text-xl font-bold text-primary">{post.data.title}</h4>
-          <p class="date">
-            <FormattedDate date={new Date(post.data.pubDate)} />
-          </p>
+          <h4 class="text-3xl font-bold text-primary">{post.data.title}</h4>
         </a>
+        <FormattedDate date={new Date(post.data.pubDate)} />
         <p>{post.data.description}</p>
       </li>
     ))

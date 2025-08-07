@@ -14,54 +14,44 @@ const { title, description, pubDate, updatedDate, heroImage, tags, draft } =
 
 <BaseLayout title={title} description={description}>
   <article>
-    <div class="hero-image">
-      {
-        heroImage && (
-          <Image
-            width={900}
-            src={heroImage}
-            alt=""
-            layout="constrained"
-            class="mx-auto"
-          />
-        )
-      }
-    </div>
-    <div class="max-w-[800px] m-auto mb-4">
-      <h1 class="text-primary text-3xl font-bold my-2">{title}</h1>
-      {
-        draft && (
-          <span class="bg-red rounded px-2 text-red-900 text-sm mb-4 font-bold inline-block">
-            draft
-          </span>
-        )
-      }
-      <div class="flex flex-row gap-2 justify-between">
-        <div>
-          <FormattedDate date={pubDate} />
-          {
-            updatedDate && (
-              <div class="last-updated-on">
-                Last updated on <FormattedDate date={updatedDate} />
-              </div>
-            )
-          }
-        </div>
-        <ul class="flex flex-row gap-2 mb-2 justify-self-end">
-          {
-            tags &&
-              tags.map((tag) => {
-                return (
-                  <li>
-                    <Tag tag={tag} />
-                  </li>
-                );
-              })
-          }
-        </ul>
+    {
+      heroImage && (
+        <Image width={800} src={heroImage} alt="" layout="constrained" />
+      )
+    }
+    <h1 class="text-primary text-3xl font-bold">{title}</h1>
+    {
+      draft && (
+        <span class="bg-red rounded px-2 text-red-900 text-sm mb-4 font-bold inline-block">
+          draft
+        </span>
+      )
+    }
+    <div class="flex flex-row gap-2 justify-between">
+      <div>
+        <FormattedDate date={pubDate} />
+        {
+          updatedDate && (
+            <div class="last-updated-on">
+              Last updated on <FormattedDate date={updatedDate} />
+            </div>
+          )
+        }
       </div>
-      <hr />
+      <ul class="flex flex-row gap-2 mb-2 justify-self-end">
+        {
+          tags &&
+            tags.map((tag) => {
+              return (
+                <li>
+                  <Tag tag={tag} />
+                </li>
+              );
+            })
+        }
+      </ul>
     </div>
+    <hr class="mb-2" />
     <Prose>
       <slot />
     </Prose>

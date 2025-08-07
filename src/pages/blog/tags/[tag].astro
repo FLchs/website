@@ -2,8 +2,7 @@
 import { getBlogPosts } from "../../../content.functions";
 import TagComponent from "../../../components/Tag.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import BlogList from "../../../components/BlogList.astro";
-
+import BlogListLayout from "../../../layouts/BlogListLayout.astro";
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
   const tags = posts.reduce((acc, post) => {
@@ -29,8 +28,10 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout title="Blog Posts" description="Posts">
-  <h1 class="text-primary text-xl">
-    Posts tagged with: <TagComponent tag={tag} />
-  </h1>
-  <BlogList posts={posts} />
+  <h1 class="text-primary text-3xl font-bold my-2 inline-block">
+    Posts tagged with:
+  </h1><span class="text-3xl">
+    <TagComponent tag={tag} />
+  </span>
+  <BlogListLayout posts={posts} />
 </BaseLayout>

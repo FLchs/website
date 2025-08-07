@@ -1,11 +1,11 @@
 ---
 import { getBlogPosts } from "../../content.functions";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogList from "../../components/BlogList.astro";
+import BlogListLayout from "../../layouts/BlogListLayout.astro";
 
 const posts = await getBlogPosts();
 ---
 
 <BaseLayout title="Blog Posts" description="Posts">
-  <BlogList posts={posts} />
+  <BlogListLayout posts={posts} />
 </BaseLayout>
