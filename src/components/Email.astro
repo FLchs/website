@@ -1,0 +1,14 @@
+---
+const { email } = Astro.props as { email: string };
+const encoded = Array.from(email, (c) => c.charCodeAt(0)).join(",");
+---
+
+<a data-c={encoded}></a>
+
+<script is:inline>
+  const el = document.currentScript.previousElementSibling;
+  if (el) {
+    el.textContent = String.fromCharCode(...el.dataset.c.split(","));
+    el.href = `mailto:${el.textContent}`;
+  }
+</script>

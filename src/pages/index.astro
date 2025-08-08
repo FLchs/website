@@ -1,8 +1,54 @@
 ---
+import Prose from "../components/Prose.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getBlogPosts } from "../content.functions";
+import BlogListLayout from "../layouts/BlogListLayout.astro";
+import Email from "../components/Email.astro";
+
+const posts = await getBlogPosts();
 ---
 
 <!-- TODO: change title, content and description -->
 <BaseLayout title="Home" description="Here is the home">
-  <h1>Hello</h1>
+  <Prose>
+    <h1>TypeDrifter</h1>
+    <p>
+      Hello, I'm François, a software engineer based in France who enjoys
+      building things.
+    </p>
+    <h2>About Me</h2>
+    <p>
+      Beyond coding, I enjoy playing the guitar, working on guitars and
+      amplifiers, tinkering with cars, and tending to plants.
+    </p>
+    <p>
+      I value privacy and data ownership, and I strongly dislike having my data
+      or software locked away from my control.
+    </p>
+    <p>
+      📬 Contact: <Email email="hello@typedrifter.com"
+        >hello@typedrifter.com</Email
+      >
+    </p>
+    <p>
+      🔗 Find me on:
+      <a
+        href="https://github.com/FLchs"
+        target="_blank"
+        rel="noopener noreferrer">GitHub</a
+      >,
+      <a
+        href="https://www.linkedin.com/in/francois-lachese/"
+        target="_blank"
+        rel="noopener noreferrer">LinkedIn</a
+      >,
+      <a
+        href="https://x.com/typedrifter"
+        target="_blank"
+        rel="noopener noreferrer">X</a
+      >
+    </p>
+    <h2>Last articles</h2>
+  </Prose>
+  <BlogListLayout posts={posts} />
 </BaseLayout>
