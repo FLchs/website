@@ -14,7 +14,7 @@ const { posts } = Astro.props;
 <ul class="grid grid-cols-2 gap-4">
   {
     posts.map((post, i) => (
-      <li class="first:col-span-2">
+      <li class="md:first:col-span-2 md:col-span-1 col-span-2">
         <a href={`/blog/${post.id}/`}>
           {post.data.heroImage &&
             (i === 0 ? (

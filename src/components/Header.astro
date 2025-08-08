@@ -4,11 +4,11 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header class="border-b border-b-secondary px-2 mb-4">
-  <nav class="flex items-center justify-between p-1">
-    <h2 class="m-0 text-2xl text-secondary font-bold">
+  <nav class="flex items-center justify-between p-1 flex-col md:flex-row">
+    <h2 class="m-0 md:text-2xl text-4xl mb-4 md:mb-0 text-secondary font-bold">
       <a class="no-underline" href="/">{SITE_TITLE}</a>
     </h2>
-    <div class="flex gap-4">
+    <div class="flex gap-4 justify-evenly w-full md:justify-between md:w-fit">
       <HeaderLink href="/">Home</HeaderLink>
       <HeaderLink href="/blog">Blog</HeaderLink>
       <HeaderLink href="/portfolio">Portfolio</HeaderLink>
