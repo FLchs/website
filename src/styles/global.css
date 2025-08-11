@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "tailwindcss";
-@plugin '@tailwindcss/typography';
-/* @import "assets/css/syntax.css"; */
 
 @theme {
   /*default font*/
@@ -40,3 +37,5 @@
     color: var(--color-text);
   }
 }
+
+@import "./prose.css"

@@ -1,0 +1,72 @@
+.prose {
+  @apply m-auto max-w-[800px] font-mono text-text leading-relaxed;
+}
+
+.prose p {
+  @apply text-justify text-text mt-5 mb-5;
+}
+
+.prose ul,
+.prose ol {
+  @apply pl-6 text-subtext mt-5 mb-5;
+}
+
+.prose li + li {
+  @apply mt-6;
+}
+
+.prose h1 {
+  @apply font-bold text-3xl text-primary mb-4;
+}
+
+.prose h2 {
+  @apply text-2xl text-secondary mt-8 mb-3;
+}
+
+.prose h3 {
+  @apply text-xl text-tertiary mt-7 mb-3;
+}
+
+.prose a {
+  @apply text-lavender underline;
+}
+
+.prose a:hover,
+.prose a:focus {
+  @apply text-peach outline-none;
+}
+
+.prose img {
+  @apply rounded-xl max-w-full my-6;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-tertiary pl-5 italic text-subtext bg-mantle rounded-md mt-8 mb-8;
+}
+
+
+.prose pre {
+  @apply bg-surface text-lavender p-4 rounded font-mono my-8 text-sm;
+}
+
+.prose hr {
+  @apply border-t border-overlay mt-12 mb-12;
+}
+
+.prose table {
+  @apply w-full border-collapse my-6 text-text;
+}
+
+.prose th,
+.prose td {
+  @apply border border-overlay px-5 py-3;
+}
+
+.prose th {
+  @apply bg-surface text-primary font-semibold text-left;
+}
+
+.prose sup {
+  @apply text-xs align-super text-subtext;
+}
+
