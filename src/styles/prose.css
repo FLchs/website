@@ -3,7 +3,7 @@
 }
 
 .prose p {
-  @apply text-justify text-text mt-5 mb-5;
+  @apply text-justify text-text mt-5 mb-5 max-w-reading;
 }
 
 .prose ul,
@@ -20,11 +20,17 @@
 }
 
 .prose h2 {
-  @apply text-2xl text-secondary mt-8 mb-3;
+  @apply font-bold text-2xl text-secondary  mb-3;
 }
 
 .prose h3 {
-  @apply text-xl text-tertiary mt-7 mb-3;
+  @apply text-xl text-tertiary mb-3;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-semibold text-peach mb-3;
 }
 
 .prose a {
