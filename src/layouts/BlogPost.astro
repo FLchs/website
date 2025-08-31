@@ -38,16 +38,16 @@ const { title, description, pubDate, updatedDate, heroImage, tags, draft } =
           )
         }
       </div>
-      <ul class="flex flex-row gap-2 mb-2 justify-self-end">
+      <ul
+        class="flex flex-row gap-2 mb-2 flex-wrap justify-end items-end max-w-2/3"
+      >
         {
           tags &&
-            tags.map((tag) => {
-              return (
-                <li>
-                  <Tag tag={tag} />
-                </li>
-              );
-            })
+            tags.map((tag) => (
+              <li>
+                <Tag tag={tag} />
+              </li>
+            ))
         }
       </ul>
     </div>

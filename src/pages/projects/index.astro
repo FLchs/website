@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getProjectsPosts } from "../../content.functions";
+import ProjectsListLayout from "../../layouts/ProjectsListLayout.astro";
+import { getCollection } from "astro:content";
+import Psynergy from "../../content/projects/psynergy/psynergy.svg";
+import PsynergyOpt from "../../content/projects/psynergy/psynergy-opt.svg";
+import Must from "../../content/projects/must/must-informatique.png";
+import PsynergyPng from "../../content/projects/psynergy/psynergy.png";
+import { Image } from "astro:assets";
+const posts = await getProjectsPosts();
+const psynergyPosts = posts["psynergy"];
+const mustPosts = posts["must"];
+---
+
+<!-- TODO: change title, description and create content -->
+<BaseLayout title="Portfolio" description="My projects">
+  <section class="mb-12 flex flex-col gap-2">
+    <div class="flex flex-row gap-4 rounded-2xl bg-yellow p-4">
+      <PsynergyOpt width={60} />
+      <h2
+        class="text-6xl font-sans font-extrabold tracking-tight uppercase text-base w-full text-center"
+      >
+        Psynergy
+      </h2>
+    </div>
+    <p class="block">
+      Over my three years as a full-stack engineer at <a
+        class="text-primary hover:underline"
+        href="https://web.archive.org/web/20240515071856/https://psynergy.fr/"
+        >Psynergy</a
+      >, I was deeply involved in every aspect of the application that connected
+      psychologists and their patients daily.
+    </p>
+    <p class="block">
+      From contributing to high-level feature discussions to managing DevOps and
+      developing projects from proof of concept to production, I built critical
+      features, significantly boosted reliability, and continually improved our
+      development workflow.
+    </p>
+    <p class="block">
+      My work wasn't just about writing code; it was about ensuring the
+      software's resilience and making sure it was easy to maintain for the
+      team, all while being involved in key startup decisions.
+    </p>
+    <ProjectsListLayout posts={psynergyPosts} />
+  </section>
+  <section class="mb-4 flex flex-col gap-6">
+    <div class="flex flex-row gap-4 rounded-2xl bg-sapphire py-4 px-2">
+      <div>
+        <Image src={Must} alt="Logo must" height={60} layout="constrained" />
+      </div>
+      <h2
+        class="text-6xl font-sans font-extrabold tracking-tight uppercase text-base text-center w-full"
+      >
+        Must Informatique
+      </h2>
+    </div>
+    <ProjectsListLayout posts={mustPosts} />
+  </section>
+</BaseLayout>

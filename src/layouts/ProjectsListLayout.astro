@@ -1,0 +1,35 @@
+---
+import { Image } from "astro:assets";
+import FormattedDate from "../components/FormattedDate.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Article = CollectionEntry<"projects">;
+interface Props {
+  posts: Article[];
+}
+
+const { posts } = Astro.props;
+---
+
+<ul class="flex flex-col gap-6">
+  {
+    posts.map((post, i) => (
+      <li>
+        <article class="flex flex-col justify-between hover:shadow-lg transition-shadow">
+          <div>
+            <h4 class="text-xl font-bold text-secondary mb-1">
+              {post.data.title}
+            </h4>
+            <p>{post.data.description}</p>
+          </div>
+          <a
+            href={`/projects/${post.id}/`}
+            class="mt-4 inline-block text-sm font-semibold underline"
+          >
+            View project: {post.data.title} →
+          </a>
+        </article>
+      </li>
+    ))
+  }
+</ul>
