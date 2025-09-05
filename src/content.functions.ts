@@ -1,4 +1,5 @@
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+import { number } from "astro:schema";
 
 export async function getBlogPosts() {
   const posts = await getCollection("blog");
@@ -22,13 +23,22 @@ export async function getProjectsPosts() {
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
 
-  // Group by company
-  const grouped: Record<string, typeof posts> = {};
-  for (const post of validPosts) {
-    const company = post.id.split("/")[0];
-    if (!grouped[company]) grouped[company] = [];
-    grouped[company].push(post);
+  interface CompanyPost extends CollectionEntry<"projects"> {
+    company: string;
   }
 
+  const grouped: CompanyPost[] = [];
+  for (const post of validPosts) {
+    const company = post.id.split("/")[0];
+    grouped.push({ ...post, company });
+  }
+  // Group by company
+  // const grouped: Record<string, typeof posts> = {};
+  // for (const post of validPosts) {
+  //   const company = post.id.split("/")[0];
+  //   if (!grouped[company]) grouped[company] = [];
+  //   grouped[company].push(post);
+  // }
+  //
   return grouped;
 }
